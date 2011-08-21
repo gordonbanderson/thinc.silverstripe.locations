@@ -1,5 +1,5 @@
 @CHARSET "UTF-8";
-#GoogleMap {}
+#GoogleMap {width: 250px;height: 250px;float: left;overflow: hidden;}
 .contact span.label{margin-left:10px;width:60px;display:block;float:left;font-weight:bold;}
 .location-map{height:300px;}
 .location-info {margin-bottom:1em;}
