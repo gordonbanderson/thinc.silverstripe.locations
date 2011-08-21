@@ -1,5 +1,5 @@
 @CHARSET "UTF-8";
-#GoogleMap {width: 250px;height: 250px;float: left;overflow: hidden;}
+#GoogleMap {}
 .contact span.label{margin-left:10px;width:60px;display:block;float:left;font-weight:bold;}
 .location-map{height:300px;}
 .location-info {margin-bottom:1em;}
@@ -9,4 +9,5 @@
 .poi-thumb {float:left;width:50%;margin-bottom:30px;}
 .poi-address {padding-left:46%;}
 .poi-address span.label {font-weight: bold;width:60px;}
-.poi-label,.location-poi-info {float:left;margin-right:8px;}
+.poi-label{float:left;margin-right:8px;}
+.location-poi-info {margin-left:28px;margin-right:8px;}
