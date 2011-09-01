@@ -73,7 +73,7 @@
             }            
         }       
         
-        initMap();
+        $('#GoogleMap').livequery(function () { initMap(); });
         
     });
 })(jQuery);	
