@@ -30,3 +30,36 @@ Planned Features
 -----------------------------------------------
 - Implement Category for Pois
 - Search Page (Filtering by Category, Location and text)
+
+
+Adding a Map Field to a Single Data Object
+------------------------------------------
+
+Firstly your object needs to have a Latitude and Longitude field:
+
+	'Latitude' => 'Float',
+	'Longitude' => 'Float'
+ 
+ I used Float, because I could not get the likes of Decimal(3,10) to work.  The default for Decimal is only 2 decimal places which is insufficient for map coordinates.
+
+ In order for geocoding to work, you need to amalgamate the relevant fields - in this example the fields were named in German (Stadt = city, Strasse = street).  This is added as a static literal field whose text is used against the Google geocoding service
+
+      //take the location page title if no city is given
+        $city = ($this->Stadt) ? $this->Stadt : $this->Title;
+        $cityField = new ReadonlyField('LocationInfo',_t('PoiLocationPage.TITLE','PoiLocationPage.TITLE'),$this->Strasse . ' ' . $this->Strasse.' ' .$city . ', ' . $this->Country );
+     
+       // $fields->push($cityField);
+     
+      $fields->addFieldToTab('Root.Content.Map', $cityField);
+
+Add the latitude and longitude fields, these are updated when the map icon is dragged.
+
+      $fields->addFieldToTab("Root.Content.Map", new NumericField('Latitude'));
+      $fields->addFieldToTab("Root.Content.Map", new NumericField('Longitude'));
+
+Add the map.
+
+      $fields->addFieldToTab('Root.Content.Map',new MapField('GoogleMap','GoogleMap'));
+
+Add a geocoder
+      $fields->addFieldToTab('Root.Content.Map',new FormAction('GetCoords',_t('Poi.GETCOORDS','Poi.GETCOORDS')));
